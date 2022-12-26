@@ -40,7 +40,7 @@ class Product():
         pass
 
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"the product with \n\
         Product Id: N/A \n\
         Title: {self.title} \n\
@@ -51,8 +51,8 @@ class Product():
         availablity: {self.is_available} \n\
         Stock keeping Unit: {self.sku} \n\
         Price: {self.price} \n\
-        Reqular Price: {self.regular_price} \n\
-        Sale Price: {self.sale_price} \n\
+        Reqular Price: ${self.regular_price} \n\
+        Sale Price: ${self.sale_price} \n\
         Manage Stock {self.manage_stock} \n\
         Stock Quantity: {self.stock_quantity} \n\
         Visible: {self.is_visible} \n\
