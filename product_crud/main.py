@@ -46,7 +46,7 @@ def main():
  
     product_one.create()
     product_two.create()
-
+    product_one.read()
 
     for p in product_one.list_all():
         print(p)
