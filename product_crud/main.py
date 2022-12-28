@@ -43,19 +43,29 @@ def main():
         current_unixtimestamp,
         current_unixtimestamp,
         1)
- 
+
+
     product_one.create()
     product_two.create()
-    product_one.read()
+    product_one.read(2)
+    product_one.delete()
+    # delete object
+    del product_one
+    del product_two
 
-    for p in product_one.list_all():
+
+    #product_one.read()
+
+    for p in Product.list_all():
         print(p)
+
+
 
     print("-------------------------------------")
     print("Does Product one instance of <<Circle>> class?")
-    print(isinstance(product_one, Circle))
+    #print(isinstance(product_one, Circle))
     print("Does Product one instance of <<Product>> class?")
-    print(isinstance(product_one, Product))
+    #print(isinstance(product_one, Product))
 
 if __name__ == '__main__':
     # This code won't run if this file is imported.
