@@ -3,7 +3,6 @@ from datetime import datetime
 
 class Product():
 
-    # without this 
     _product_list = {}
 
     def __init__(self, title:str, short_description:str , description:str  , slug:str, permalink:str, sku:str, price:float, regular_price:float,
@@ -30,8 +29,8 @@ class Product():
        
 
     def create(self):
-        self._product_list[self] = self.id
-        return self.__repr__()
+         self._product_list[self] = self.id
+         return self.__repr__()
 
     #this method shall be able read a product via id/uuid or ... from the the product datastructure (dictionary,list or maybe database)
     def read(self,_id):
@@ -43,16 +42,16 @@ class Product():
         
 
     #this method shall be able to update product and amend the data structure for related product
-    def update(self):
-        pass
+    def update(self,**kwargs):
+        for key,value in kwargs.items():
+            print('%s:%s' % (key,value))
 
-         
+                
         
 
     #this method shall be able to remove the product
     def delete(self):
-        del Product._product_list[self]
-        
+            return Product._product_list.clear()        
        
 
     #shall I get all products with staticmethod ? any better solution ? what about a class method ?

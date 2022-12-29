@@ -47,8 +47,13 @@ def main():
 
     product_one.create()
     product_two.create()
-    product_one.read(2)
+    
+    product_two.delete()
     product_one.delete()
+
+    product_one.read(1)
+
+
     # delete object
     del product_one
     del product_two
