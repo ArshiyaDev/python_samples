@@ -48,8 +48,8 @@ def main():
     product_one.create()
     product_two.create()
     
-    product_two.delete()
-    product_one.delete()
+    product_two.delete(2)
+    product_one.delete(1)
 
     product_one.read(1)
 

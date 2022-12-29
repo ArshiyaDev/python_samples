@@ -39,19 +39,18 @@ class Product():
                 return key.__repr__()
 
         
-        
-
+    
     #this method shall be able to update product and amend the data structure for related product
     def update(self,**kwargs):
         for key,value in kwargs.items():
             print('%s:%s' % (key,value))
 
                 
-        
-
     #this method shall be able to remove the product
-    def delete(self):
-            return Product._product_list.clear()        
+    def delete(self,_id):
+        for key, value in Product._product_list.items():
+            if value == _id:
+                return key._product_list.clear()
        
 
     #shall I get all products with staticmethod ? any better solution ? what about a class method ?
@@ -67,7 +66,7 @@ class Product():
 
     def __repr__(self) -> str:
         return f"the product with \n\
-        Product Id: N/A \n\
+        Product Id: {self.id} \n\
         Title: {self.title} \n\
         Short description: {self.short_description} \n\
         Description: {self.description} \n\
