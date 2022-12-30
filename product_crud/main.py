@@ -47,7 +47,8 @@ def main():
 
     product_one.create(1000)
     product_two.create(1001)    
-    
+    product_two.update({'title': 'lenovo 330'})
+
     for p in Product.list_all():
         print(p)
 

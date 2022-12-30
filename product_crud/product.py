@@ -31,10 +31,32 @@ class Product():
         self.date_modified_gmt = date_modified_gmt
        
 
-    def create(self,id:int):
-        self.id = id
-        self._product_list.append({self})
+
+
+    def create(self,id):
+        self._product_list.append(
+            {
+                "id" : id,
+                "category_id" : self.category_id,
+                "title" : self.title,
+                "short description" : self.short_description,
+                "description" : self.description,
+                "slug" : self.slug,
+                "permalink" : self.permalink,
+                "is available" : self.is_available,
+                "sku" : self.sku,
+                "price" : self.price,
+                "regular price" : self.regular_price,
+                "sale price" : self.sale_price,
+                "manage stock" : self.manage_stock,
+                "stock quantity" : self.stock_quantity,
+                "is visible" : self.is_visible,
+                "date created_gmt" : self.date_created_gmt,
+                "date modified gmt" : self.date_modified_gmt
+            }
+        )
         return self.__repr__()
+    
 
     #this method shall be able read a product via id/uuid or ... from the the product datastructure (dictionary,list or maybe database)
     @classmethod    
@@ -47,9 +69,10 @@ class Product():
         
     
     #this method shall be able to update product and amend the data structure for related product
-    def update(self,**kwargs):
-        for key,value in kwargs.items():
-            print('%s:%s' % (key,value))
+    def update(self, new_attr):
+        for key, value in new_attr.items():
+            if key in self.__dict__:
+                setattr(self, key, value) 
 
                 
     #this method shall be able to remove the product
