@@ -5,7 +5,6 @@ from product import Product
 from circle import Circle
 
 def main():
-    print('Hello World')
     
 
     mycircle = Circle(8)
@@ -46,11 +45,12 @@ def main():
 
 
     product_one.create(1000)
-    product_two.create(1001)    
-    product_two.update({'title': 'lenovo 330'})
+    product_two.create(1001)  
+    print(Product.delete(1000))
+    print(Product.read(1001)) 
+    #print(Product.delete(1000))
+    product_one.update({'title':'Mac'})
 
-    for p in Product.list_all():
-        print(p)
 
 
 
