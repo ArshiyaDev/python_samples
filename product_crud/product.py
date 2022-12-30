@@ -1,11 +1,14 @@
 # arshiya
 from datetime import datetime
 
+
+
 class Product():
 
-    _product_list = {}
+    _product_list = []
 
-    def __init__(self, title:str, short_description:str , description:str  , slug:str, permalink:str, sku:str, price:float, regular_price:float,
+
+    def __init__(self ,title:str, short_description:str , description:str  , slug:str, permalink:str, sku:str, price:float, regular_price:float,
                  sale_price:float, manage_stock:bool, stock_quantity:int, date_created_gmt :int, date_modified_gmt:int,category_id:int = 0, 
                  is_visible = True, is_available:bool = False):
 
@@ -28,16 +31,19 @@ class Product():
         self.date_modified_gmt = date_modified_gmt
        
 
-    def create(self):
-         self._product_list[self] = self.id
-         return self.__repr__()
+    def create(self,id:int):
+        self.id = id
+        self._product_list.append({self})
+        return self.__repr__()
 
     #this method shall be able read a product via id/uuid or ... from the the product datastructure (dictionary,list or maybe database)
-    def read(self,_id):
-        for key,value in Product._product_list.items():
-            if value == _id:
-                return key.__repr__()
+    @classmethod    
+    def read(cls,id:int):
+        for i in cls._product_list:
+            if i['id'] == id:
+                return i['product'].__repr__()
 
+        return "we can't find that id"
         
     
     #this method shall be able to update product and amend the data structure for related product
@@ -47,17 +53,20 @@ class Product():
 
                 
     #this method shall be able to remove the product
-    def delete(self,_id):
-        for key, value in Product._product_list.items():
-            if value == _id:
-                return key._product_list.clear()
+    @classmethod    
+    def delete(cls,id:int):
+        for i in cls._product_list:
+            if i['id'] == id:
+                cls._product_list.remove(i)
+                return 'clean'
        
 
     #shall I get all products with staticmethod ? any better solution ? what about a class method ?
     # what is the diffrence ?
     # shall I seprate the datastructe from the class ? why? who? any better solution?
-    def list_all():
-        return tuple(Product._product_list.keys())
+    @classmethod    
+    def list_all(cls):
+        return tuple(cls._product_list)
 
     def __del__(self):
         pass
@@ -66,7 +75,7 @@ class Product():
 
     def __repr__(self) -> str:
         return f"the product with \n\
-        Product Id: {self.id} \n\
+        Product Id: N/A \n\
         Title: {self.title} \n\
         Short description: {self.short_description} \n\
         Description: {self.description} \n\
