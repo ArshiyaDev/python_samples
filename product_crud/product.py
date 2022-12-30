@@ -34,62 +34,44 @@ class Product():
 
 
     def create(self,id):
-        self._product_list.append(
-            {
-                "id" : id,
-                "category_id" : self.category_id,
-                "title" : self.title,
-                "short description" : self.short_description,
-                "description" : self.description,
-                "slug" : self.slug,
-                "permalink" : self.permalink,
-                "is available" : self.is_available,
-                "sku" : self.sku,
-                "price" : self.price,
-                "regular price" : self.regular_price,
-                "sale price" : self.sale_price,
-                "manage stock" : self.manage_stock,
-                "stock quantity" : self.stock_quantity,
-                "is visible" : self.is_visible,
-                "date created_gmt" : self.date_created_gmt,
-                "date modified gmt" : self.date_modified_gmt
-            }
-        )
-        return self.__repr__()
-    
+        self.id = id
+        Product._product_list.append(dict({'id':self.id,'category_id':self.category_id,'tittle':self.title,'short_description':self.short_description,
+        'description':self.description,'slug':self.slug,'permalink':self.permalink,'is_available':self.is_available,'sku':self.sku,
+        'price':self.price,'regular_price':self.regular_price,'sale_price':self.sale_price,'manage_stock':self.manage_stock,'stock_quantity':self.stock_quantity,
+        'is_visible':self.is_visible,'data_cretaed_modified':self.date_created_gmt,'data_modified_gmt':self.date_created_gmt}))
+        
 
     #this method shall be able read a product via id/uuid or ... from the the product datastructure (dictionary,list or maybe database)
-    @classmethod    
-    def read(cls,id:int):
-        for i in cls._product_list:
+    @staticmethod
+    def read(id:int):
+        for i in Product._product_list:
             if i['id'] == id:
-                return i['product'].__repr__()
+                return i
 
-        return "we can't find that id"
+        return "we can't find that item"
         
     
     #this method shall be able to update product and amend the data structure for related product
-    def update(self, new_attr):
-        for key, value in new_attr.items():
-            if key in self.__dict__:
-                setattr(self, key, value) 
+    def update(self, new_product):
+        pass
 
                 
     #this method shall be able to remove the product
-    @classmethod    
-    def delete(cls,id:int):
-        for i in cls._product_list:
+    @staticmethod    
+    def delete(id:int):
+        for i in Product._product_list:
             if i['id'] == id:
-                cls._product_list.remove(i)
-                return 'clean'
+                return Product._product_list.remove(i)
+                
+        return 'clean'
        
 
     #shall I get all products with staticmethod ? any better solution ? what about a class method ?
     # what is the diffrence ?
     # shall I seprate the datastructe from the class ? why? who? any better solution?
-    @classmethod    
+    @staticmethod    
     def list_all(cls):
-        return tuple(cls._product_list)
+        return Product._product_list
 
     def __del__(self):
         pass
