@@ -2,6 +2,8 @@ from datetime import datetime
 
 class Product():
 
+    #change the data structure 
+    # you can make it global or create anothe class to feed the DataStructure
     _product_list = {}
 
     def __init__(self, title:str, short_description:str , description:str  , slug:str, permalink:str, sku:str, price:float, regular_price:float,
@@ -27,13 +29,23 @@ class Product():
         self.date_modified_gmt = date_modified_gmt
        
 
-    def create(self):
-        self._product_list[self] = self.id
-        return self.__repr__()
-
-    #this method shall be able read a product via id/uuid or ... from the the product datastructure (dictionary,list or maybe database)
-    def read(self):
+    def create(self,id:int):
+        #pass the id to the key of each id in the _product_list dictionary but 
+        #find suitable datastructure to store many products ! I don't think just 
+        #single dictionary is the perfect soulution !
+        #Product._product_list[id] = id 
+        #return self.__repr__()
+        #for key, value in Product._product_list[self]  :
+         #   print (key, value)
         pass
+
+    #this method shall be able read a product via id/uuid or ... 
+    # from the the product datastructure (dictionary,list or maybe database)
+
+    def read(self,id):
+        for value,key in self._product_list.items():
+            if value==id:
+                return key
 
     #this method shall be able to update product and amend the data structure for related product
     def update(self):
@@ -46,9 +58,12 @@ class Product():
     #shall I get all products with staticmethod ? any better solution ? what about a class method ?
     # what is the diffrence ?
     # shall I seprate the datastructe from the class ? why? who? any better solution?
-    @staticmethod
+    #@staticmethod
     def list_all():
         return tuple(Product._product_list.keys())
+
+    #def __del__(self):
+    #   print('Object destroyed')
 
 
     def __repr__(self) -> str:
