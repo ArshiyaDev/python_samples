@@ -70,7 +70,7 @@ class Product():
     # what is the diffrence ?
     # shall I seprate the datastructe from the class ? why? who? any better solution?
     @staticmethod    
-    def list_all(cls):
+    def list_all():
         return Product._product_list
 
     def __del__(self):
