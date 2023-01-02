@@ -61,10 +61,6 @@ def main():
     #print(isinstance(product_one, Product))
     #print(Product._product_list)
 
-    product_one.update({'title': 'lenovo 330'})
-
-
-
 
 if __name__ == '__main__':
     # This code won't run if this file is imported.
