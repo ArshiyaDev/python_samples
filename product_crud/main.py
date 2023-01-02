@@ -12,7 +12,7 @@ def main():
     currentdatetime = datetime.datetime.utcnow()
     current_unixtimestamp = int(currentdatetime.timestamp())
 
-    product_one = Product(1,'Lenovo T410s',
+    product_one = Product('Lenovo T410s',
         'Lenovo ThinkPad T410s Core i5 M560 2.66GHz 4GB RAM, WIN 10 14" AC ADAPTER',
         'The T410s provides a good companion for office use, that is well suited for business trips thanks to its 14.1 inch size and light weight.',
         'thinkbook-13x-gen-2-(13-inch-intel)',
@@ -28,7 +28,7 @@ def main():
         1)
 
 
-    product_two = Product(2,'Lenovo T530',
+    product_two = Product('Lenovo T530',
         'Lenovo 530',
         'some long descrition',
         'thinkbook-530',
@@ -46,20 +46,24 @@ def main():
 
     product_one.create(1000)
     product_two.create(1001)  
-    print(Product.delete(1000))
-    print(Product.read(1001)) 
     #print(Product.delete(1000))
-    product_one.update({'title':'Mac'})
+    #print(Product.read(1000))
+    #print(Product.read(1001))
+    print(product_two.update({'tittle': 'Lenovo Legion'}))
 
-
-
+    #product_two.update({'short_description':'macboook'})
+    print(Product.list_all())
 
     print("-------------------------------------")
     print("Does Product one instance of <<Circle>> class?")
     #print(isinstance(product_one, Circle))
     print("Does Product one instance of <<Product>> class?")
     #print(isinstance(product_one, Product))
-    print(Product._product_list)
+    #print(Product._product_list)
+
+    product_one.update({'title': 'lenovo 330'})
+
+
 
 
 if __name__ == '__main__':
