@@ -1,0 +1,2 @@
+class ProductInMemoryDb:
+    pass
