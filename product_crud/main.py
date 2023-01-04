@@ -62,8 +62,11 @@ def main():
     #print(isinstance(product_one, Product))
     #print(Product._product_list)
 
+<<<<<<< HEAD
     product_two.title = 'macbook'
     print(Product.read(1001))
+=======
+>>>>>>> 351d7c21c724973f7c6c56ece885574f4d3556cf
 
 if __name__ == '__main__':
     # This code won't run if this file is imported.
