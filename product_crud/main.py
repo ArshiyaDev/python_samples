@@ -45,11 +45,12 @@ def main():
 
 
     product_one.create(1000)
-    product_two.create(1001)  
+    product_two.create(1001)
+   
     #print(Product.delete(1000))
     #print(Product.read(1000))
     #print(Product.read(1001))
-    print(product_two.update({'tittle': 'Lenovo Legion'}))
+    # print(product_two.update({'tittle': 'Lenovo Legion'}))
 
     #product_two.update({'short_description':'macboook'})
     print(Product.list_all())
@@ -61,10 +62,8 @@ def main():
     #print(isinstance(product_one, Product))
     #print(Product._product_list)
 
-    product_one.update({'title': 'lenovo 330'})
-
-
-
+    product_two.title = 'macbook'
+    print(Product.read(1001))
 
 if __name__ == '__main__':
     # This code won't run if this file is imported.

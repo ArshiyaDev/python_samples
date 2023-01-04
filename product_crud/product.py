@@ -1,11 +1,10 @@
 # arshiya
 from datetime import datetime
-
+from product_inmemory_db import ProductInMemoryDb
 
 
 class Product():
 
-    _product_list = []
 
 
     def __init__(self ,title:str, short_description:str , description:str  , slug:str, permalink:str, sku:str, price:float, regular_price:float,
@@ -54,8 +53,8 @@ class Product():
         
     
     #this method shall be able to update product and amend the data structure for related product
-    def update(self,update_product):
-        for key,value in update_product.items():
+    def update(self):
+        for key,value in self._product_list.items():
             if key in self.__dict__:
                 setattr(self,key,value)
 
