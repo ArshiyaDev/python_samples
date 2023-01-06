@@ -1,13 +1,22 @@
-# arshiya khalili
 
 import datetime
 from product import Product
 from circle import Circle
+import json
+
 
 def main():
+
     
 
     mycircle = Circle(8)
+    print(mycircle.__hash__())
+    print(mycircle.area())
+
+
+    mycircle.radius = 9
+    print(mycircle.__hash__())
+    print(mycircle.area())
 
     currentdatetime = datetime.datetime.utcnow()
     current_unixtimestamp = int(currentdatetime.timestamp())
@@ -42,30 +51,39 @@ def main():
         current_unixtimestamp,
         current_unixtimestamp,
         1)
-
-
-    print(product_one.create(1000))
-    product_two.create(1001)
-   
-    #print(Product.delete(1000))
-    #print(Product.read(1000))
-    #print(Product.read(1001))
-    # print(product_two.update({'tittle': 'Lenovo Legion'}))
-
-    #product_two.update({'short_description':'macboook'})
-    #print(Product.list_all())
+ 
+    #I would like to pass an Id when I create a  new product
+    product_one.create(1000)
+    product_two.create(1008)
 
 
 
-    print("-------------------------------------")
-    print("Does Product one instance of <<Circle>> class?")
-    #print(isinstance(product_one, Circle))
-    print("Does Product one instance of <<Product>> class?")
-    #print(isinstance(product_one, Product))
+    print(Product.read(1008))
+    #print(product_one.__repr__())
     #print(Product._product_list)
+ 
+    #print(product_one)
 
-    product_two.title = 'macbook'
-    #print(Product.read(1001))
+
+    #print(product_one.__str__())
+
+    #print(Product.list_all())
+   # print(product_one.read(1001))
+   
+   # print("-------------------------------------")
+   # print("Does Product one instance of <<Circle>> class?")
+    # print(isinstance(product_one, Circle))
+   # print("Does Product one instance of <<Product>> class?")
+    # print(isinstance(product_one, Product))
+
+
+   # del product_one
+   # del product_two
+
+   # print(Product.list_all())
+      
+
+    #print(Product._product_list)
 
 if __name__ == '__main__':
     # This code won't run if this file is imported.
