@@ -25,10 +25,10 @@ Employee.set_raise_amt(1.05)
 
 #create new instance from string with static method
 new_emp1 = Employee.from_string(emp_str1)
-print(new_emp1) # whitout magic method __str__  : <employee.Employee object at 0x7ff4a7ef5310>
+#print(new_emp1) # whitout magic method __str__  : <employee.Employee object at 0x7ff4a7ef5310>
 
 #calculate tax base on salary
-print(Employee.calc_uk_tax(55000))
+print(Employee.calc_uk_tax(3000))
 
 
 #print(emp1.raise_amt)
