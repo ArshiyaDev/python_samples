@@ -44,7 +44,7 @@ def main():
         1)
 
 
-    product_one.create(1000)
+    print(product_one.create(1000))
     product_two.create(1001)
    
     #print(Product.delete(1000))
@@ -53,7 +53,9 @@ def main():
     # print(product_two.update({'tittle': 'Lenovo Legion'}))
 
     #product_two.update({'short_description':'macboook'})
-    print(Product.list_all())
+    #print(Product.list_all())
+
+
 
     print("-------------------------------------")
     print("Does Product one instance of <<Circle>> class?")
@@ -62,11 +64,8 @@ def main():
     #print(isinstance(product_one, Product))
     #print(Product._product_list)
 
-<<<<<<< HEAD
     product_two.title = 'macbook'
-    print(Product.read(1001))
-=======
->>>>>>> 351d7c21c724973f7c6c56ece885574f4d3556cf
+    #print(Product.read(1001))
 
 if __name__ == '__main__':
     # This code won't run if this file is imported.

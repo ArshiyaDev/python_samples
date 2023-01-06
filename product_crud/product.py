@@ -3,6 +3,7 @@ from datetime import datetime
 from product_inmemory_db import ProductInMemoryDb
 
 
+
 class Product():
 
 
@@ -28,27 +29,36 @@ class Product():
         self.is_visible = is_visible
         self.date_created_gmt = date_created_gmt
         self.date_modified_gmt = date_modified_gmt
-       
+        self.db = ProductInMemoryDb()
+        
 
 
-
-    def create(self,id):
+    def create(self,id:int):
         self.id = id
-        Product._product_list.append(dict({'id':self.id,'category_id':self.category_id,'tittle':self.title,'short_description':self.short_description,
+        self.db.insert(self.to_dict())
+
+
+        # _productdb.insert(dict({'id':self.id,'category_id':self.category_id,'tittle':self.title,'short_description':self.short_description,
+        # 'description':self.description,'slug':self.slug,'permalink':self.permalink,'is_available':self.is_available,'sku':self.sku,
+        # 'price':self.price,'regular_price':self.regular_price,'sale_price':self.sale_price,'manage_stock':self.manage_stock,'stock_quantity':self.stock_quantity,
+        # 'is_visible':self.is_visible,'data_cretaed_modified':self.date_created_gmt,'data_modified_gmt':self.date_created_gmt}))
+        
+    def to_dict(self) -> dict:
+        dict = {'id':self.id,'category_id':self.category_id,'tittle':self.title,'short_description':self.short_description,
         'description':self.description,'slug':self.slug,'permalink':self.permalink,'is_available':self.is_available,'sku':self.sku,
         'price':self.price,'regular_price':self.regular_price,'sale_price':self.sale_price,'manage_stock':self.manage_stock,'stock_quantity':self.stock_quantity,
-        'is_visible':self.is_visible,'data_cretaed_modified':self.date_created_gmt,'data_modified_gmt':self.date_created_gmt}))
-        
-        
-
+        'is_visible':self.is_visible,'data_cretaed_modified':self.date_created_gmt,'data_modified_gmt':self.date_created_gmt}        
+        return dict
+    
+    
+    
     #this method shall be able read a product via id/uuid or ... from the the product datastructure (dictionary,list or maybe database)
     @classmethod
     def read(cls,id:int):
         for i in cls._product_list:
             if i['id'] == id:
                 return i
-
-
+                
         return "we can't find that item"
         
     
@@ -73,9 +83,10 @@ class Product():
     #shall I get all products with staticmethod ? any better solution ? what about a class method ?
     # what is the diffrence ?
     # shall I seprate the datastructe from the class ? why? who? any better solution?
-    @staticmethod    
-    def list_all():
-        return Product._product_list
+        
+    def list_all(self):
+        #return Product._product_list
+        return self.db
 
     def __del__(self):
         pass
