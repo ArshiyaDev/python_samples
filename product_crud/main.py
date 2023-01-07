@@ -53,22 +53,14 @@ def main():
         1)
  
     #I would like to pass an Id when I create a  new product
+   
     product_one.create(1000)
-    product_two.create(1008)
+    product_two.create(1001)
 
-
-
-    print(Product.read(1008))
-    #print(product_one.__repr__())
-    #print(Product._product_list)
- 
-    #print(product_one)
-
-
-    #print(product_one.__str__())
-
-    #print(Product.list_all())
-   # print(product_one.read(1001))
+    product_one.title = 'Mac book pro 2022'
+    product_one.update()
+    print(Product.delete(1001))
+    print(product_one.list_all())
    
    # print("-------------------------------------")
    # print("Does Product one instance of <<Circle>> class?")
