@@ -1,6 +1,6 @@
 from datetime import datetime
 from product_inmemory_db import ProductInMemoryDb
-
+from product_injson_db import ProductInJsonDb
 
 
 class Product(): #inherits from dict or make it dataclass 
@@ -29,12 +29,13 @@ class Product(): #inherits from dict or make it dataclass
         self.date_created_gmt = date_created_gmt
         self.date_modified_gmt = date_modified_gmt
         self.db = ProductInMemoryDb()
+        self.jsondb = ProductInJsonDb()
         
 
 
-    def create(self,id:int):
+    def create(self,id:int) -> dict:
         self.id = id
-        self.db.insert(self.to_dict())
+        self.jsondb.insert(self.to_dict())
 
 
         
@@ -55,7 +56,7 @@ class Product(): #inherits from dict or make it dataclass
     
     #this method shall be able to update product and amend the data structure for related product
     def update(self):
-        return self.db.update(self.id,self.to_dict())
+        return self.jsondb.update(self.id,self.to_dict())
 
 
                 

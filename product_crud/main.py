@@ -51,16 +51,32 @@ def main():
         current_unixtimestamp,
         current_unixtimestamp,
         1)
+
+    product_tree = Product('Imack',
+        'Lenovo 530',
+        'some long descrition',
+        'thinkbook-530',
+        'https://www.lenovo.com/gb/en/p/laptops/thinkbook/530',
+        'X394UB83NJ',
+        689.95,
+        549.95,
+        0,
+        False,
+        8,
+        current_unixtimestamp,
+        current_unixtimestamp,
+        1)
  
     #I would like to pass an Id when I create a  new product
    
     product_one.create(1000)
     product_two.create(1001)
+    product_tree.create(1002)
 
     product_one.title = 'Mac book pro 2022'
     product_one.update()
-    print(Product.delete(1001))
-    print(product_one.list_all())
+    # print(Product.delete(1001))
+    # print(product_one.list_all())
    
    # print("-------------------------------------")
    # print("Does Product one instance of <<Circle>> class?")

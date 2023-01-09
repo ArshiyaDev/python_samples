@@ -27,7 +27,7 @@ class ProductInMemoryDb():
                 return self._product_listdb
 
 
-    def read(self,id:int):
+    def read(self,id:int) -> dict:
         for i in self._product_listdb:
             if i['id'] == id:
                 return i
