@@ -50,18 +50,18 @@ class Product(): #inherits from dict or make it dataclass
     
     
     #this method shall be able read a product via id/uuid or ... from the the product datastructure (dictionary,list or maybe database)
-    def read(self):
+    def read(self) -> dict:
         return self.db.read(self.id)
         
     
     #this method shall be able to update product and amend the data structure for related product
-    def update(self):
+    def update(self) -> dict :
         return self.jsondb.update(self.id,self.to_dict())
 
 
                 
     #this method shall be able to remove the product
-    def delete(self):
+    def delete(self) -> dict:
         return self.db.delete(self.id)
         
        
@@ -70,7 +70,7 @@ class Product(): #inherits from dict or make it dataclass
     # what is the diffrence ?
     # shall I seprate the datastructe from the class ? why? who? any better solution?
         
-    def list_all(self):
+    def list_all(self) -> dict:
         return self.db.list()
 
     def __del__(self):

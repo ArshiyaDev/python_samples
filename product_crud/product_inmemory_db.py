@@ -32,7 +32,6 @@ class ProductInMemoryDb():
             if i['id'] == id:
                 return i
                 
-        return "we can't find that item"
                 
     
 
@@ -40,11 +39,9 @@ class ProductInMemoryDb():
     def findbyid(self,id:int) -> int:
           for i in self._product_listdb:
                 if i['id'] == id:
-                    return f"this {id} is available"
-                else:
-                    return "this id doesn't exist"
+                  return 0
 
         
 
-    def list(self) -> (dict|list):
+    def list(self) -> dict:
         return self._product_listdb
