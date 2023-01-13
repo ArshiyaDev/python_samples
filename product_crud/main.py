@@ -3,20 +3,24 @@ import datetime
 from product import Product
 from circle import Circle
 import json
-
+import os
+from product_inmemory_db import ProductInMemoryDb
+from product_injson_db import ProductInJsonDb
 
 def main():
-
-    
+    product_jsonfile = ProductInJsonDb()
+    ProductInMemoryDb.loaddata(product_jsonfile.read_from_json())
+    # print(os.path.exists('./product_data.json'))
+    # print(f"-->{os.path.abspath('.')}")
 
     mycircle = Circle(8)
-    print(mycircle.__hash__())
-    print(mycircle.area())
+    # print(mycircle.__hash__())
+    # print(mycircle.area())
 
 
     mycircle.radius = 9
-    print(mycircle.__hash__())
-    print(mycircle.area())
+    # print(mycircle.__hash__())
+    # print(mycircle.area())
 
     currentdatetime = datetime.datetime.utcnow()
     current_unixtimestamp = int(currentdatetime.timestamp())
@@ -69,12 +73,18 @@ def main():
  
     #I would like to pass an Id when I create a  new product
    
-    product_one.create(1000)
-    product_two.create(1001)
-    product_tree.create(1002)
-
-    product_one.title = 'Mac book pro 2022'
+    product_one.create(1006)
+    # product_two.create(1001)
+    # product_tree.create(1002)
+    product_one.title = 'imack'
     product_one.update()
+    product_one.id = 888
+    product_one.delete()
+    print(*ProductInMemoryDb._product_listdb,sep="\n\n")
+
+
+    # product_one.title = 'Mac book pro 2022'
+    # product_one.update()
     # print(Product.delete(1001))
     # print(product_one.list_all())
    

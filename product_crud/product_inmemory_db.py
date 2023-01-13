@@ -8,7 +8,13 @@ class ProductInMemoryDb():
         pass
 
 
-    def insert(self,data:dict) -> dict:
+    @staticmethod
+    def loaddata(data:list):
+        ProductInMemoryDb._product_listdb.extend(data)
+
+    
+
+    def insert(self,data:dict):
         self._product_listdb.append(data)
 
 
@@ -43,5 +49,5 @@ class ProductInMemoryDb():
 
         
 
-    def list(self) -> dict:
+    def list(self) -> list:
         return self._product_listdb

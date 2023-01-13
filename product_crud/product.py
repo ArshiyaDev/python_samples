@@ -62,7 +62,7 @@ class Product(): #inherits from dict or make it dataclass
                 
     #this method shall be able to remove the product
     def delete(self) -> dict:
-        return self.db.delete(self.id)
+        return self.jsondb.delete(self.id)
         
        
 
