@@ -1,5 +1,6 @@
+from product import StorageData
 
-class ProductInMemoryDb():
+class ProductInMemoryDb(StorageData):
     
     _product_listdb = []
 

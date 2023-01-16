@@ -1,7 +1,8 @@
 import json 
 from product_inmemory_db import ProductInMemoryDb
+from product import StorageData
 
-class ProductInJsonDb:
+class ProductInJsonDb(StorageData):
 
     def __init__(self):
         self.file_name = './product_data.json'
@@ -55,5 +56,4 @@ class ProductInJsonDb:
         
 
     def list(self) -> None:
-        self.data = self.product_inmemory.list()
-        self.read_from_json()
+        return self.product_inmemory.list()
